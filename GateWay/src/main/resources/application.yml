@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Gate
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    #开启注册与发现功能
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: Order
+          uri: lb://Order
+          predicates:
+            - Method=GET,POST
+server:
+  port: 9000
