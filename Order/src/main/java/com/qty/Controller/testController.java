@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RefreshScope
-@Api(value = "订单模块的测试类")
+@Api(value = "订单模块的测试类",tags = "订单")
 @RestController
 public class testController {
 
