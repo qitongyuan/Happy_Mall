@@ -14,9 +14,12 @@ spring:
           uri: lb://Order
           predicates:
             - Method=GET,POST
-          filters:
-            - SwaggerHeaderFilter
-            - StripPrefix=1
+            - Path=/Order/**
+        - id: User
+          uri: lb://User
+          predicates:
+            - Method=GET,POST
+            - Path=/User/**
 
 server:
   port: 9000

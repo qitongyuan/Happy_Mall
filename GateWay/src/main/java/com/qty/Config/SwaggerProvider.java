@@ -2,6 +2,7 @@ package com.qty.Config;
 
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.support.NameUtils;
@@ -11,7 +12,9 @@ import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 @Primary
@@ -20,6 +23,10 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
     public static final String API_URI = "/v2/api-docs";
     private final RouteLocator routeLocator;
     private final GatewayProperties gatewayProperties;
+
+//    @Value("${spring.application.name}")
+//    private final String self="Gate";
+
 
 
     @Override
@@ -38,6 +45,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
         return resources;
     }
 
+    //获取对应的路由资源
     private SwaggerResource swaggerResource(String name, String location) {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
